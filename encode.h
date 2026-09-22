@@ -87,4 +87,38 @@ Status encode_byte_to_lsb(char data, char *image_buffer);
 /* Copy remaining image bytes from src to stego image after encoding */
 Status copy_remaining_img_data(FILE *fptr_src, FILE *fptr_dest);
 
+/*---------------------------------------------------------------*/
+
+/* Decoding function prototype */
+
+/* Read and validate Decode args from argv */
+Status read_and_validate_decode_args(char *argv[], EncodeInfo *encInfo);
+
+/* Get File pointers for i/p and o/p files */
+Status open_decode_files(EncodeInfo *encInfo);
+
+/* Perform the decoding */
+Status do_decoding(EncodeInfo *encInfo);
+
+/* Decode Magic String */
+Status decode_magic_string(const char *magic_string, EncodeInfo *encInfo);
+
+/* Decode a byte from LSB of image data array */
+Status decode_byte_to_lsb(char *image_buffer, char *data);
+
+/* Decode size from LSB of image data */
+Status decode_size_from_lsb(char *image_buffer, int *data);
+
+/* Decode secret file extension size */
+Status decode_secret_file_extn_size(EncodeInfo *encInfo);
+
+/* Decode secret file extension */
+Status decode_secret_file_extn(EncodeInfo *encInfo);
+
+/* Decode secret file size */
+Status decode_secret_file_size(EncodeInfo *encInfo);
+
+/* Decode secret file data */
+Status decode_secret_file_data(EncodeInfo *encInfo);
+
 #endif
