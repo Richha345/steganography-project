@@ -52,6 +52,21 @@ Status read_and_validate_decode_args(char *argv[], EncodeInfo *encInfo)
         return e_failure;
     }
 
+    // check BM signature
+    char signature[2];
+    // read 2 bytes of data from image
+    if(fread(signature, 2, 1, encInfo->fptr_src_image) != 1)
+    {
+        printf("\nERROR : Failed to read image data\n");
+        return e_failure;
+    }
+    signature[2]=0;
+    if(strcmp(signature,"BM")!=0)
+    {
+        printf("Error: Invalid BMP signature\n");
+        return e_failure;
+    }
+
     return e_success;
 }
 
