@@ -24,6 +24,8 @@ int main(int argc, char *argv[])
         if(read_and_validate_encode_args(argv, &encInfo) == e_failure)
         {
             printf("\nInvalid input..\n");
+            printf("\n-------- SAMPLE INPUTS --------\n");
+            printf("\n./a.out -e source_file.bmp secret_file.txt [output_file.bmp]\n");
             return 0;
         }
 
